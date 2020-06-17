@@ -33,6 +33,10 @@
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
         <!-- END Stylesheets -->
+        <link rel="stylesheet" href="{{asset('dropzone-5.7.0/dist/dropzone.css')}}">
+ <script src="{{asset('dropzone-5.7.0/dist/dropzone.js')}}"></script>
+ <link rel="stylesheet" type="text/css" href="{{asset('assets/jquery.tagsinput.css')}}" />
+<script src="{{asset('assets/jquery.tagsinput.js')}}"></script>
         @yield('styles')
     </head>
     <body>

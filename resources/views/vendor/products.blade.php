@@ -1,15 +1,25 @@
 @extends('layouts.dashboard')
 @section('styles')
-  <link rel="stylesheet" href="assets/js/plugins/select2/css/select2.min.css">
-        <link rel="stylesheet" href="assets/js/plugins/dropzone/dist/min/dropzone.min.css">
+  {{-- <link rel="stylesheet" href="assets/js/plugins/select2/css/select2.min.css"> --}}
+        {{-- <link rel="stylesheet" href="assets/js/plugins/dropzone/dist/min/dropzone.min.css"> --}}
         <style type="text/css">
+            .ck-content {
+    min-height: 300px;
+};
         	input[type=number]::-webkit-inner-spin-button {
   opacity: 1;
 };
-       </style>
 
- 
-</style>
+
+       </style> 
+
+
+
+
+
+ {{--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script> --}}
+{{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/dropzone.css"> --}}
 @endsection
 @section('content')
         <!-- Header -->
@@ -243,54 +253,37 @@
                 <!-- Page Content -->
                 <div class="content">
                     <!-- Quick Overview + Actions -->
-                    <div class="row">
-                       
-                        
-                        
-                    </div>
+                  
                     <!-- END Quick Overview + Actions -->
 
                     <!-- Info -->
+                    <div class="row">
+                        <div class="col-sm-8">  
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Info</h3>
                         </div>
-                        <div class="block-content">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-8">
+                        <div class="block-content block-content-full">
+                           
                                     <form  id="product-form" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <div class="form-group">
-                                            <label for="one-ecom-product-name">Title</label>
-                                            <input type="text" class="form-control" id="one-ecom-product-name" name="title" value="{{old('title')}}" >
-                                             <span class="form-text  title_error" style="font-size: 16px;color: red;"></span>
-                                        </div>
+                                       <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="product-name">Title</label>
+                                    <input class="form-control" type="text" id="product-name" name="title"
+                                           placeholder="Short Sleeve Shirt" >
+                                           <span class="form-text  descrip_error" style="font-size: 16px;color: red;"></span>
+                                </div>
+                            </div>
                                        
                                         <div class="form-group">
-                                            <!-- CKEditor (js-ckeditor-inline + js-ckeditor ids are initialized in Helpers.ckeditor()) -->
-                                            <!-- For more info and examples you can check out http://ckeditor.com -->
+                                         
                                             <label>Description</label>
-                                           <textarea name="descrip" rows="4" id="editor" class="form-control" >{!!old('descrip')!!}</textarea>
+                                           <textarea name="descrip" id="editor" class="form-control" >{!!old('descrip')!!}</textarea>
                                               <span class="form-text  descrip_error" style="font-size: 16px;color: red;"></span>
                                         </div>
                                      
-                                      {{--   <div class="form-group">
-                                            <!-- Select2 (.js-select2 class is initialized in Helpers.select2()) -->
-                                            <!-- For more info and examples you can check out https://github.com/select2/select2 -->
-                                            <label for="one-ecom-product-category">Category</label>
-                                            <select class="js-select2 form-control" id="one-ecom-product-category" name="one-ecom-product-category" style="width: 100%;" data-placeholder="Choose one..">
-                                                <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                <option value="1">Cables</option>
-                                                <option value="2" selected>Video Games</option>
-                                                <option value="3">Tablets</option>
-                                                <option value="4">Laptops</option>
-                                                <option value="5">PC</option>
-                                                <option value="6">Home Cinema</option>
-                                                <option value="7">Sound</option>
-                                                <option value="8">Office</option>
-                                                <option value="9">Adapters</option>
-                                            </select>
-                                        </div> --}}
+                                    
                                          <div class="form-row">
     <div class="col">
     	  <label for="one-ecom-product-price">Price in USD ($)</label>
@@ -314,51 +307,24 @@
         Charge tax on this product
       </label>
     </div>
-  </div>
-  {{-- 
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <label for="one-ecom-product-price">Price in USD ($)</label>
-                                                <input type="text" class="form-control" id="one-ecom-product-price" name="one-ecom-product-price" value="59,00">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <label for="one-ecom-product-stock">Stock</label>
-                                                <input type="text" class="form-control" id="one-ecom-product-stock" name="one-ecom-product-stock" value="29">
-                                            </div>
-                                        </div>
-                                     --}}
-                                       {{--  <div class="form-group">
-                                            <label class="d-block">Condition</label>
-                                            <div class="custom-control custom-radio custom-control-inline mb-1">
-                                                <input type="radio" class="custom-control-input" id="one-ecom-product-condition-new" name="one-ecom-product-condition" checked>
-                                                <label class="custom-control-label" for="one-ecom-product-condition-new">New</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline mb-1">
-                                                <input type="radio" class="custom-control-input" id="one-ecom-product-condition-old" name="one-ecom-product-condition">
-                                                <label class="custom-control-label" for="one-ecom-product-condition-old">Old</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Published?</label>
-                                            <div class="custom-control custom-switch mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="one-ecom-product-published" name="one-ecom-product-published" checked>
-                                                <label class="custom-control-label" for="one-ecom-product-published"></label>
-                                            </div>
-                                        </div> --}}
-                                       {{--  <div class="form-group">
-                                            <button type="submit" class="btn btn-alt-success">Update</button>
-                                        </div> --}}
+
                                     
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                      <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Media</h3>
                         </div>
+                       {{--  <div class="block-content">
+                      <div class="dropzone">
+                          <div class="dz-message" id="onclick">
+                              Click anywhere to upload files
+                          </div>
+                          <input type="file" name="file" id="file">
+                      </div>
+                        </div> --}}
 
                         <div class="block-content block-content-full thumbnail"style="border: 1px black dotted" >
                             <div class="col-sm-4">
@@ -368,8 +334,7 @@
                 </div>
                             <div class="row justify-content-center " >
                                 <div class="col-md-10 col-lg-8">
-                                    <!-- Dropzone (functionality is auto initialized by the plugin itself in js/plugins/dropzone/dropzone.min.js) -->
-                                    <!-- For more info and examples you can check out http://www.dropzonejs.com/#usage -->
+                                
                                     
                                  <label for="imageUpload" class="btn btn-light btn-block btn-outlined">Add file</label>
 <input type="file" id="imageUpload" name="thumbnail" accept="image/*" multiple style="display: none">
@@ -386,7 +351,7 @@
                             <h3 class="block-title">Inventory</h3>
                         </div>
                         <div class="block-content block-content-full">
-                           <div class="col-md-8 offset-md-2">
+                           
                                 <div class="form-row">
     <div class="col">
     	  <label for="one-ecom-product-price">SKU (Stock Keeping Unit)</label>
@@ -413,7 +378,7 @@
  
                             </div>
                         </div>
-                    </div>
+                  
       <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Shippping</h3>
@@ -428,9 +393,7 @@
   </div>
   <hr>
   <div id="content">
-                        <div class="block-content block-content-full" >
-                           <div class="col-md-8 offset-md-2">
-                                
+                        <div class="block-content block-content-full ml-4" >
   <div class="form-group">
   	 <label for="one-ecom-product-price">Weight</label>
   	 <br>
@@ -452,10 +415,10 @@
   	 <br>
   	 <small>Used by border officers to calculate duties when shipping internationally. Shown on customs forms you print during fulfillment.</small>
   	 <br>
-  	 <label for="one-ecom-product-price">Country region/Zones</label>
+  	 <label for="one-ecom-product-price" class="mt-2" >Country region/Zones</label>
   	 <br>
   	  <select class="custom-select col-sm-6" id="inlineFormCustomSelectPref" name="country">
-    <option selected>Choose...</option>
+    <option value="0" selected>Choose...</option>
     <option>Pak</option>
       </select>
 	
@@ -463,7 +426,7 @@
  </div>
                             </div>
                         </div>
-                    </div>
+                    
                     <!-- Meta Data -->
                     <div class="block">
                         <div class="block-header block-header-default">
@@ -479,9 +442,7 @@
   </div>
   <hr>
         
-                        <div class="block-content">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-8">
+                        <div class="block-content block-content-full ml-4">  
                                   
 <div class="form-group" id="content1">
     <label>Options</label>
@@ -501,11 +462,11 @@
             
         </div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" name="option_value" placeholder="Separate options with commas">
+            <input type="text" class="form-control" name="option_value" id="tags" >
         </div>
     </div>
     <div class="form-group mt-2">
-        <button class="form-control col-sm-4 btn btn-light" id="button" >Add another option</button>
+        <button type="button" class="btn btn-light btn-square" id="button" >Add another option</button>
     </div>
     <div id="option2">
          <small> Option 2</small>
@@ -526,7 +487,7 @@
         </div>
     </div>
     <div class="form-group mt-2">
-        <button class="form-control col-sm-4 btn btn-light" id="button1"  >Add another option</button>
+        <button type="button" class="btn btn-light btn-square" id="button1" >Add another option</button>
     </div>
     </div>
     <div id="option3">
@@ -548,31 +509,208 @@
         </div>
     </div>
    
-    </div>
     
-</div>
-                                         <div class="form-group">
-      <button id="button" type="submit" class="btn btn-primary float-right">Save</button>
-  </div>
-                                    </form>
+    
+
+                                        
+                                    </div>
+                        
+                    
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- END Meta Data -->
 
-                    <!-- Media -->
-                   
+                    <!-- coll-sm-4-->
+        <div class="col-sm-4">
+            <div class="block">
+                <div class="block-header block-header-default">
+                    <div class="block-title">
+                        Status
+                    </div>
                 </div>
-                <!-- END Page Content -->
+        <div class="block-content">
+            <div class="form-group">
+                <div  class="custom-control custom-radio mb-1">
+                    <input class="custom-control-input" type="radio" name="exampleRadios" id="exampleRadios" value="option1" checked>
+                    <label class="custom-control-label" for="exampleRadios">
+                        Published
+                    </label>
+                </div>
+                <div  class="custom-control custom-radio mb-1">
+                    <input class="custom-control-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                    <label class="custom-control-label" for="exampleRadios1">
+                        Draft
+                    </label>
+                </div>
+            </div>
+           
+                </div>
+                 <!--end block content -->
+                
+            </div>
+            <!-- end block -->
+        
+             <div class="block">
+                        <div class="block-header block-header-default">
+                            <div class="block-title">
+                                Mark as Fulfilled
+                            </div>
+                        </div>
+                        <div class="block-content pt-0" >
+                            <div class="form-group">
+                            <div class="custom-control custom-radio mt-3">
+                                <input type="radio" required class="custom-control-input" id="example-radio-customfulfilled" name="fulfilled-by" value="Fantasy" checked="">
+                                <label class="custom-control-label" for="example-radio-customfulfilled">By WeFullFill</label>
+                            </div>
+                            <div class="custom-control custom-radio mb-1">
+                                <input type="radio" required class="custom-control-input" id="example-radio-customAliExpress" name="fulfilled-by" value="AliExpress" >
+                                <label class="custom-control-label" for="example-radio-customAliExpress">By AliExpress</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end block-->
+                    <div class="block">
+                        <div class="block-header block-header-default">
+                            <div class="block-title">
+                                Product Category
+                            </div>
+                        </div>
+                        <div class="block-content">
+                            <div class="form-group">
+                                 <span class="category_down" data-value="0" style="margin-right: 5px;font-size: 16px;vertical-align: middle"><i class="fa fa-angle-right"></i></span>
+                                 <div class="custom-control custom-checkbox d-inline-block">
+                                            <input type="checkbox" name="category[]" value="8" class="custom-control-input category_checkbox" id="rowcat_Home &amp; Garden">
+                                            <label class="custom-control-label" for="rowcat_Home &amp; Garden">Home &amp; Garden</label>
+                                        </div>
+                                        <br>
+                                        <span class="category_down" data-value="0" style="margin-right: 5px;font-size: 16px;vertical-align: middle"><i class="fa fa-angle-right"></i></span>
+                                 <div class="custom-control custom-checkbox d-inline-block">
+                                            <input type="checkbox" name="category[]" value="8" class="custom-control-input category_checkbox" id="computer">
+                                            <label class="custom-control-label" for="computer">Computer &amp; Office</label>
+
+                                        </div>
+                                        <br>
+                                        <span class="category_down" data-value="0" style="margin-right: 5px;font-size: 16px;vertical-align: middle"><i class="fa fa-angle-right"></i></span>
+                                 <div class="custom-control custom-checkbox d-inline-block">
+                                            <input type="checkbox" name="category[]" value="8" class="custom-control-input category_checkbox" id="Home">
+                                            <label class="custom-control-label" for="home">Home Improvement</label>
+                                            
+                                        </div>
+                                         <br>
+                                        <span class="category_down" data-value="0" style="margin-right: 5px;font-size: 16px;vertical-align: middle"><i class="fa fa-angle-right"></i></span>
+                                 <div class="custom-control custom-checkbox d-inline-block">
+                                            <input type="checkbox" name="category[]" value="8" class="custom-control-input category_checkbox" id="electronics">
+                                            <label class="custom-control-label" for="electronics">Car Electronics</label>
+                                            
+                                        </div>
+                                         <br>
+                                        <span class="category_down" data-value="0" style="margin-right: 5px;font-size: 16px;vertical-align: middle"><i class="fa fa-angle-right"></i></span>
+                                 <div class="custom-control custom-checkbox d-inline-block">
+                                            <input type="checkbox" name="category[]" value="8" class="custom-control-input category_checkbox" id="health">
+                                            <label class="custom-control-label" for="health">Health &amp; Personal Care</label>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end block -->
+                     <div class="block">
+                        <div class="block-header">
+                            <h3 class="block-title">Organization</h3>
+                        </div>
+                        <div class="block-content pt-0">
+                            <div class="form-group">
+                                <div class="col-xs-12 push-10">
+                                    <label>Product Type</label>
+                                    <input type="text" class="form-control" name="product_type"
+                                           placeholder="eg. Shirts">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 push-10">
+                                    <label>Vendor</label>
+                                    <input type="text" class="form-control" name="vendor" placeholder="eg. Nike">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="form-material form-material-primary">
+                                        <label>Tags</label>
+                                        <input class="js-tags-input form-control" type="text"
+                                               id="product-meta-keywords" name="tags" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end block -->
+                      <div class="block">
+                        <div class="block-header">
+                            <h3 class="block-title">More Details</h3>
+                        </div>
+                        <div class="block-content">
+                            <div class="form-group">
+                                <div class="col-xs-12 push-10">
+                                    <label>Processing Time</label>
+                                    <input type="text" class="form-control" name="processing_time" placeholder="eg. 7 working days" value="">
+                                </div>
+                            </div>
+<div class="form-group">
+    <div class="col-xs-12">
+        <label>Warned Platform</label>
+        <br>
+        <div class="custom-control custom-checkbox d-inline-block">
+            <input type="checkbox" name="platforms[]" value="3" class="custom-control-input" id="row_Aliexpress">
+            <label class="custom-control-label" for="row_Aliexpress">Aliexpress</label>
+        </div>
+        <br>
+        <div class="custom-control custom-checkbox d-inline-block">
+            <input type="checkbox" name="platforms[]" value="4" class="custom-control-input" id="row_Amazon">
+            <label class="custom-control-label" for="row_Amazon">Amazon</label>
+        </div>
+        <br>
+        <div class="custom-control custom-checkbox d-inline-block">
+            <input type="checkbox" name="platforms[]" value="7" class="custom-control-input" id="row_Ebay">
+            <label class="custom-control-label" for="row_Ebay">Ebay</label>
+        </div>
+        <br>
+    </div>
+</div>
+</div>
+</div>
+ <!-- end block -->
+        <div class="form-group">
+      <button id="button" type="submit" class="btn btn-primary float-right">Save</button>
+  </div>              
+</form>
+<!-- end block -->
+            
+        </div>
+        <!-- end col-sm-4 -->
+        
+        </div>
+        <!--end row --> 
+                       
+                </div>
+                <!--end content div-->
+                
             </main>
+            <!-- END main -->
             @endsection
             @section('scripts')
+
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/dropzone.js"></script>
+ --}}
+
+ {{-- 
+ <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script> --}}
               <script src="assets/js/oneui.core.min.js"></script>
              <script src="{{asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
         <script src="{{asset('assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
          <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
-        <script src="{{asset('assets/js/plugins/dropzone/dropzone.min.js')}}"></script>
+        <script src="https://phpstack-362288-1193299.cloudwaysapps.com/assets/js/plugins/jquery-tags-input/jquery.tagsinput.min.js"></script>
 
         <!-- Page JS Helpers (Select2 + CKEditor plugins) -->
         <script>jQuery(function(){ One.helpers(['select2', 'maxlength']); });</script>
@@ -582,16 +720,28 @@ $(document).ready(function() {
         .create( document.querySelector( '#editor' ) )
         .then( editor => {
             window.editor = editor;
+
         } )
         .catch( err => {
             console.error( err.stack );
         } );
         });
 </script>
+
        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js" ></script>
        
 
         <script>
+            $(function(){
+                 $('#tags').tagsInput({
+                    'placeholder' : 'wsd',
+                     'height':'100px',
+   'width':'300px',
+                 });
+
+
+            });
+            
  $(function(){
     $('#shipping').on('change',function(){
       $('#content').slideToggle(this.checked);
@@ -615,6 +765,7 @@ $(document).ready(function() {
     $('#button1').on('click',function(){
       $('#option3').show();
     });
+   
   });
    $('#imageUpload').on('change', function() {
 var file = $(this).get(0).files;
@@ -628,7 +779,7 @@ $("#imgthumbnail").attr('src', image);
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-    
+   
 $('#product-form').submit(function(e){
 e.preventDefault();
 $.ajaxSetup({
@@ -690,10 +841,11 @@ bootbox.alert({
 title: "Message",
 message:result.message,
 callback: function(){
-$("#product-form").trigger("reset");
-$('#editor').html('');
- $('#imgthumbnail').html('');
-// $('#avatar').html('');
+  setTimeout(function(){ location.reload(); }, 1000);
+// $("#product-form").trigger("reset");
+// $('#editor').html('');
+ // $('#imgthumbnail').attr('src','');
+ // $('.ck-content p').html(' <br data-cke-filler="true">');
 
 // $('.show_image').css('display','none');
 }
@@ -707,87 +859,5 @@ $('#editor').html('');
 
                  
 
-              //   jQuery('#product-form').submit(function(e){
-              //     e.preventDefault();
-              //     $.ajaxSetup({
-              //       headers: {
-              //         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-              //       }
-              //     });
-              //     var myForm = document.getElementById('product-form');
-              //     var formData = new FormData(myForm);
-              //       jQuery.ajax({
-              //         url: "{{ url('update/{id}') }}",
-              //         method : 'post',
-              //         data: formData,
-              //         contentType: false,
-              //          cache: false,
-              //          processData: false,
-              //         success: function(result){
-              //           if(result.success==0){
-              //             if(result.validation==0){
-              //               if(result.message.title)
-              //               {
-              //                 $('.title_error').html(result.message.title[0]);
-              //               }
-              //              if(result.message.image)
-              //               {
-              //                 $('.image_error').html(result.message.image[0]);
-              //               }
-              //               if(result.message.price)
-              //               {
-              //                 $('.price_error').html(result.message.price[0]);
-              //               }
-              //               if(result.message.description)
-              //               {
-              //                 $('.description_error').html(result.message.description[0]);
-              //               }
-
-              //             }
-              //           }
-                        
-              //           else{
-              //             bootbox.alert({
-              //   title: "Message",
-              //   message:result.message,
-              //   callback: function(){
-              //      $("#category-form").trigger("reset");
-              //                 $('.image_error').html('');
-              //                 $('.category_error').html('');
-              //                 $('.show_image').css('display','none');
-              //   }   
-              // });
-
-
-              //           }
-              //         }});
-              //     });
-
-                 
-                 // Update record
-// $(document).on("click", ".update" , function() {
-//   var edit_id = $(this).data('id');
-
-//   var name = $('#name_'+edit_id).val();
-//   var image = $('#image_'+edit_id).val();
-
-//   if(name != '' && email != ''){
-//     $.ajax({
-//       url: "{{url('update')}}"/+id,
-//       type: 'post',
-//       data: {_token: CSRF_TOKEN,editid: edit_id,name: name,email: email},
-//       success: function(response){
-//         alert(response);
-//       }
-//     });
-//   }else{
-//     alert('Fill all fields');
-//   }
-// });
-
-
-           
-        
-    
 </script>
             @endsection

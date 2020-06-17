@@ -34,7 +34,6 @@ class ProductsController extends Controller
             'price' => ['required', 'string'],
             'compare_price'   =>['required'],
             'sku'=>['required'],
-            'barcode' => ['required'],
             'thumbnail' => ['required','mimes:jpeg,jpg,png,gif','max:10000' ],
             'quantity'=>['required'],
             
@@ -46,7 +45,6 @@ class ProductsController extends Controller
             'price.required'=>'This field is required',
             'compare_price.required'=>'This field is required',
             'sku.required'=>'This field is required',
-            'barcode.required'=>'This field is required',
             'thumbnail.required'=>'This field is required',
             'quantity.required'=>'This field is required',
         );
@@ -73,8 +71,10 @@ class ProductsController extends Controller
            'Barcode' => $request->barcode ? $request->barcode : 0,
            'Image'=>$filename,
            'Quantity'=>$request->quantity,
-           'Country/zone'=>$request->country,
+           'Weight'=>$request->weight,
+           'County/zone'=>$request->country,
        ]);
+         
          if($product)
          {
             Vareint::create([
