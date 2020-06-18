@@ -33,10 +33,10 @@
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
         <!-- END Stylesheets -->
-        <link rel="stylesheet" href="{{asset('dropzone-5.7.0/dist/dropzone.css')}}">
- <script src="{{asset('dropzone-5.7.0/dist/dropzone.js')}}"></script>
- <link rel="stylesheet" type="text/css" href="{{asset('assets/jquery.tagsinput.css')}}" />
-<script src="{{asset('assets/jquery.tagsinput.js')}}"></script>
+       <link rel="stylesheet" href="{{asset('dropzone-5.7.0/dist/dropzone.css')}}">
+ 
+ <link rel="stylesheet" type="text/css" href="{{asset('assets/tags.css')}}" />
+
         @yield('styles')
     </head>
     <body>
@@ -1682,6 +1682,8 @@
 
         <!-- Page JS Code -->
         <script src="assets/js/pages/be_pages_dashboard.min.js"></script>
+        <script src="{{asset('dropzone-5.7.0/dist/dropzone.js')}}"></script>
+        <script src="{{asset('assets/tags.js')}}"></script>
         @yield('scripts')
     </body>
 </html>

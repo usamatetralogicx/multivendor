@@ -6,11 +6,9 @@
             .ck-content {
     min-height: 300px;
 };
-        	input[type=number]::-webkit-inner-spin-button {
+            input[type=number]::-webkit-inner-spin-button {
   opacity: 1;
 };
-
-
        </style> 
 
 
@@ -250,8 +248,26 @@
 
             <!-- Main Container -->
             <main id="main-container">
-                <!-- Page Content -->
-                <div class="content">
+        <div class="content content-full pt-3 pb-3">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+                <h1 class="flex-sm-fill h5 my-2">
+                    Add New Product
+                </h1>
+                <nav class="flex-sm-00-auto ml-sm-3 mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-alt">
+                        <li class="breadcrumb-item" aria-current="page">
+                            <a class="link-fx" href="">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page">
+                            <a class="link-fx" href="">Products</a>
+                        </li>
+
+                        <li class="breadcrumb-item">Add New</li>
+                    </ol>
+                </nav>
+            </div>
+        
+    
                     <!-- Quick Overview + Actions -->
                   
                     <!-- END Quick Overview + Actions -->
@@ -286,14 +302,14 @@
                                     
                                          <div class="form-row">
     <div class="col">
-    	  <label for="one-ecom-product-price">Price in USD ($)</label>
+          <label for="one-ecom-product-price">Price in USD ($)</label>
       <input type="text" class="form-control" name="price" id="one-ecom-product-price" placeholder="$ 0.00" value="{{old('price')}}">
       
                     <span class="form-text  price_error" style="font-size: 16px;color: red;"></span>
     </div>
     <div class="col">
 
-    	  <label for="one-ecom-product-price">Compare at price</label>
+          <label for="one-ecom-product-price">Compare at price</label>
       <input type="text" class="form-control" name="compare_price" placeholder="$ 0.00" value="{{old('compare_price')}}">
        
                      <span class="form-text  compare_price_error" style="font-size: 16px;color: red;"></span>
@@ -317,32 +333,10 @@
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Media</h3>
                         </div>
-                       {{--  <div class="block-content">
-                      <div class="dropzone">
-                          <div class="dz-message" id="onclick">
-                              Click anywhere to upload files
-                          </div>
-                          <input type="file" name="file" id="file">
-                      </div>
-                        </div> --}}
-
-                        <div class="block-content block-content-full thumbnail"style="border: 1px black dotted" >
-                            <div class="col-sm-4">
-                            <div class="  text-center">
-                    <img src="{{asset('images/no-thumbnail.jpeg')}}" style="height: 100px;width: 230px;" id="imgthumbnail"  alt="">
-                </div>
-                </div>
-                            <div class="row justify-content-center " >
-                                <div class="col-md-10 col-lg-8">
-                                
-                                    
-                                 <label for="imageUpload" class="btn btn-light btn-block btn-outlined">Add file</label>
-<input type="file" id="imageUpload" name="thumbnail" accept="image/*" multiple style="display: none">
- 
-                     <span class="form-text  thumbnail_error" style="font-size: 16px;color: red;"></span>
-                                </div>
-                            </div>
-                        </div>
+                      <div action="/"
+      class="dropzone"
+      id="my-awesome-dropzone"></div>
+                       
                     </div>
                     <!-- END Media -->
                     <!-- END Info -->
@@ -354,24 +348,24 @@
                            
                                 <div class="form-row">
     <div class="col">
-    	  <label for="one-ecom-product-price">SKU (Stock Keeping Unit)</label>
+          <label for="one-ecom-product-price">SKU (Stock Keeping Unit)</label>
       <input type="text" class="form-control" name="sku" id="one-ecom-product-price" placeholder="$ 0.00" value="{{old('sku')}}">
      
                      <span class="form-text  sku_error" style="font-size: 16px;color: red;"></span>
     </div>
     <div class="col">
 
-    	  <label for="one-ecom-product-price">Barcode (ISBN, UPC, GTIN, etc.)</label>
+          <label for="one-ecom-product-price">Barcode (ISBN, UPC, GTIN, etc.)</label>
       <input type="text" class="form-control" name="barcode" placeholder="$ 0.00" value="{{old('barcode')}}">
        
                      <span class="form-text  barcode_error" style="font-size: 16px;color: red;"></span>
     </div>
   </div>
   <div class="form-group">
-  	 <label for="one-ecom-product-price">Quantity</label>
-  	 <br>
-  	 <small>Available</small>
-  	<input type="number" class="form-control col-sm-6"  name="quantity" value="{{old('quantity')}}">
+     <label for="one-ecom-product-price">Quantity</label>
+     <br>
+     <small>Available</small>
+    <input type="number" class="form-control col-sm-6"  name="quantity" value="{{old('quantity')}}">
     
                      <span class="form-text  quantity_error" style="font-size: 16px;color: red;"></span>
   </div>
@@ -395,12 +389,12 @@
   <div id="content">
                         <div class="block-content block-content-full ml-4" >
   <div class="form-group">
-  	 <label for="one-ecom-product-price">Weight</label>
-  	 <br>
-  	 <small>Used to calculate shipping rates at checkout and label prices during fulfillment.</small>
-  	 <div class="form-inline mt-2">
-  	<input type="text" class="form-control col-sm-4"  name="weight">
-  	  <select class="custom-select col-sm-2" id="inlineFormCustomSelectPref">
+     <label for="one-ecom-product-price">Weight</label>
+     <br>
+     <small>Used to calculate shipping rates at checkout and label prices during fulfillment.</small>
+     <div class="form-inline mt-2">
+    <input type="text" class="form-control col-sm-4"  name="weight">
+      <select class="custom-select col-sm-2" id="inlineFormCustomSelectPref">
     <option selected>Choose...</option>
     <option value="1">Kg</option>
     <option value="2">oz</option>
@@ -411,17 +405,17 @@
 </div>
 <hr>
 <div class="form-group">
-		 <label for="one-ecom-product-price">CUSTOMS INFORMATION</label>
-  	 <br>
-  	 <small>Used by border officers to calculate duties when shipping internationally. Shown on customs forms you print during fulfillment.</small>
-  	 <br>
-  	 <label for="one-ecom-product-price" class="mt-2" >Country region/Zones</label>
-  	 <br>
-  	  <select class="custom-select col-sm-6" id="inlineFormCustomSelectPref" name="country">
+         <label for="one-ecom-product-price">CUSTOMS INFORMATION</label>
+     <br>
+     <small>Used by border officers to calculate duties when shipping internationally. Shown on customs forms you print during fulfillment.</small>
+     <br>
+     <label for="one-ecom-product-price" class="mt-2" >Country region/Zones</label>
+     <br>
+      <select class="custom-select col-sm-6" id="inlineFormCustomSelectPref" name="country">
     <option value="0" selected>Choose...</option>
     <option>Pak</option>
       </select>
-	
+    
 </div>
  </div>
                             </div>
@@ -445,45 +439,36 @@
                         <div class="block-content block-content-full ml-4">  
                                   
 <div class="form-group" id="content1">
-    <label>Options</label>
+    <h3 class="font-w300">Options</h3>
     <br>
-    <small> Option 1</small>
-    <div class="form-row mt-1">
+    <h5> Option 1</h5>
+    <div class="form-group">
         
-        <div class="col-sm-3">
-            <select class="custom-select" id="inlineFormCustomSelectPref" name="option">
-                <option value="0">Choose..</option>
-                <option value="1">Size</option>
-                <option value="2">Color</option>
-                <option value="3">Material</option>
-                <option value="3">Style</option>
-                <option value="3">Title</option>
-            </select>
-            
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" value="Size">
+            </div>
+            <div class="col-sm-9">
+                <input class="js-tags-options options-preview form-control" type="text"
+                id="testInput1" name="option1" value="javascript,vanilla js">
+            </div>
         </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" name="option_value" id="tags" >
+        
+        <div class="form-group mt-2">
+            <button type="button" class="btn btn-light btn-square" id="button" >Add another option</button>
         </div>
-    </div>
-    <div class="form-group mt-2">
-        <button type="button" class="btn btn-light btn-square" id="button" >Add another option</button>
     </div>
     <div id="option2">
-         <small> Option 2</small>
-    <div class="form-row mt-1">
-        
-        <div class="col-sm-3">
-            <select class="custom-select" id="inlineFormCustomSelectPref">
-                <option value="1">Size</option>
-                <option value="2">Color</option>
-                <option value="3">Material</option>
-                <option value="3">Style</option>
-                <option value="3">Title</option>
-            </select>
-            
-        </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" placeholder="Separate options with commas">
+          <h5> Option 1</h5>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" value="Color">
+            </div>
+            <div class="col-sm-9">
+                <input class="js-tags-options options-preview form-control" type="text"
+                id="testInput2" name="option1" value="javascript,vanilla js">
+            </div>
         </div>
     </div>
     <div class="form-group mt-2">
@@ -491,38 +476,26 @@
     </div>
     </div>
     <div id="option3">
-         <small> Option 3</small>
-    <div class="form-row mt-1">
-        
-        <div class="col-sm-3">
-            <select class="custom-select" id="inlineFormCustomSelectPref">
-                <option value="1">Size</option>
-                <option value="2">Color</option>
-                <option value="3">Material</option>
-                <option value="3">Style</option>
-                <option value="3">Title</option>
-            </select>
-            
+         <h5> Option 3</h5>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" value="Material">
+            </div>
+            <div class="col-sm-9">
+                <input class="js-tags-options options-preview form-control" type="text"
+                id="testInput3" name="option1" value="javascript,vanilla js">
+            </div>
         </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" placeholder="Separate options with commas">
-        </div>
-    </div>
-   
-    
-    
-
-                                        
-                                    </div>
-                        
-                    
+    </div>          
+</div>                                     
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- END Meta Data -->
+                    <!-- END col-sm-8 -->
 
-                    <!-- coll-sm-4-->
+                    <!--start  coll-sm-4-->
         <div class="col-sm-4">
             <div class="block">
                 <div class="block-header block-header-default">
@@ -706,12 +679,12 @@
 
  {{-- 
  <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script> --}}
-              <script src="assets/js/oneui.core.min.js"></script>
+              
              <script src="{{asset('assets/js/plugins/select2/js/select2.full.min.js')}}"></script>
         <script src="{{asset('assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
          <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
-        <script src="https://phpstack-362288-1193299.cloudwaysapps.com/assets/js/plugins/jquery-tags-input/jquery.tagsinput.min.js"></script>
-
+      {{--   <script src="https://phpstack-362288-1193299.cloudwaysapps.com/assets/js/plugins/jquery-tags-input/jquery.tagsinput.min.js"></script>
+ --}}
         <!-- Page JS Helpers (Select2 + CKEditor plugins) -->
         <script>jQuery(function(){ One.helpers(['select2', 'maxlength']); });</script>
           <script type="text/javascript">
@@ -720,7 +693,6 @@ $(document).ready(function() {
         .create( document.querySelector( '#editor' ) )
         .then( editor => {
             window.editor = editor;
-
         } )
         .catch( err => {
             console.error( err.stack );
@@ -732,13 +704,20 @@ $(document).ready(function() {
        
 
         <script>
-            $(function(){
-                 $('#tags').tagsInput({
-                    'placeholder' : 'wsd',
-                     'height':'100px',
-   'width':'300px',
-                 });
-
+           
+            $(function() {
+                $("#testInput1").tags({
+                    unique: true,
+                    maxTags: 5
+                });
+                $("#testInput2").tags({
+                    unique: true,
+                    maxTags: 5
+                });
+                $("#testInput3").tags({
+                    unique: true,
+                    maxTags: 5
+                });
 
             });
             
@@ -835,7 +814,6 @@ $('.quantity_error').html(result.message.quantity[0]);
 }
 }
 }
-
 else{
 bootbox.alert({
 title: "Message",
@@ -846,18 +824,33 @@ callback: function(){
 // $('#editor').html('');
  // $('#imgthumbnail').attr('src','');
  // $('.ck-content p').html(' <br data-cke-filler="true">');
-
 // $('.show_image').css('display','none');
 }
 });
 }
 }});
 });
-
 });
-
-
                  
-
+</script>
+ <script type="text/javascript">
+ Dropzone.options.myAwesomeDropzone = {
+  maxFiles: 1,
+  addRemoveLinks: true,
+  accept: function(file, done) {
+    console.log("uploaded");
+    done();
+  },
+  init: function() {
+    this.on("maxfilesexceeded", function(file){
+        alert("No more files please!");
+        this.removeFile(file);
+    });
+    // this.on("addedfile", function(file) {
+    //    myDropzone.options.removefile.call(myDropzone, mockFile);
+    //    //  I want to delete an existing element
+    //  });
+  }
+};
 </script>
             @endsection
