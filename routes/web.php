@@ -20,3 +20,7 @@ Route::post('login','AuthController@login');
 Route::get('logout','AuthController@logout');
 Route::get('products','ProductsController@index');
 Route::post('post_product','ProductsController@product_save');
+Route::get('dashboard','AdminController@index');
+Route::get('add_membership','MembershipController@index');
+Route::post('post_membership','MembershipController@package_save');
+Route::get('all_membership','MembershipController@all');

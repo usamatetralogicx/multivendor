@@ -46,8 +46,8 @@ class AuthController extends Controller
         ];
         if(Auth::attempt($user_data))
         {
-            $name=Auth::user()->role->name;
-            return view('vendor/'.$name);
+           
+            return view('vendor/products');
                 
             }
     else
